@@ -1,0 +1,11 @@
+import math
+f= open("input.txt", "r")
+for line in f:
+    x,y=(line.strip("\n").split())
+print(x,y)
+
+solution=int((math.factorial(int(x))/math.factorial(int(x)-int(y)))%1000000)
+print(solution)
+
+with open('48_SOLUTION', 'w') as output_data:
+    output_data.write(str(solution))
