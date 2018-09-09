@@ -1,1 +1,24 @@
+RNA_string="ACGUUUCCC" #
+assert len(RNA_string)%3==0
 
+RNA_coding_table='''UUU F      CUU L      AUU I      GUU V
+UUC F      CUC L      AUC I      GUC V
+UUA L      CUA L      AUA I      GUA V
+UUG L      CUG L      AUG M      GUG V
+UCU S      CCU P      ACU T      GCU A
+UCC S      CCC P      ACC T      GCC A
+UCA S      CCA P      ACA T      GCA A
+UCG S      CCG P      ACG T      GCG A
+UAU Y      CAU H      AAU N      GAU D
+UAC Y      CAC H      AAC N      GAC D
+UAA Stop   CAA Q      AAA K      GAA E
+UAG Stop   CAG Q      AAG K      GAG E
+UGU C      CGU R      AGU S      GGU G
+UGC C      CGC R      AGC S      GGC G
+UGA Stop   CGA R      AGA R      GGA G
+UGG W      CGG R      AGG R      GGG G '''
+RNA_coding_dict=dict(zip(RNA_coding_table.split()[0::2],RNA_coding_table.split()[1::2]))
+
+list=[RNA_string[i*3:i*3+3] for i in range (len(RNA_string)//3)] #spliting the RNA_string into a list with elemets that are 3 characters long
+
+print("".join([RNA_coding_dict[x] for x in list]))
